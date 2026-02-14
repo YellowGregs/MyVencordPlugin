@@ -76,17 +76,34 @@ function handle_translate(msg_id: string, data: TranslationValue) {
 
 function get_lang_name(code: string): string {
     const names: Record<string, string> = {
-        en: "English", es: "Spanish", fr: "French", de: "German", it: "Italian",
-        pt: "Portuguese", ru: "Russian", ja: "Japanese", ko: "Korean", zh: "Chinese",
-        "zh-CN": "Chinese (Simplified)", "zh-TW": "Chinese (Traditional)",
-        ar: "Arabic", hi: "Hindi", nl: "Dutch", pl: "Polish", tr: "Turkish",
-        sv: "Swedish", da: "Danish", fi: "Finnish", no: "Norwegian", cs: "Czech",
-        el: "Greek", he: "Hebrew", th: "Thai", vi: "Vietnamese", id: "Indonesian",
-        ms: "Malay", uk: "Ukrainian", ro: "Romanian", hu: "Hungarian", bg: "Bulgarian",
-        hr: "Croatian", sk: "Slovak", sl: "Slovenian", lt: "Lithuanian", lv: "Latvian",
-        et: "Estonian", auto: "Auto-detected"
+        auto: "Detect language", af: "Afrikaans", sq: "Albanian", am: "Amharic", ar: "Arabic",
+        hy: "Armenian", as: "Assamese", ay: "Aymara", az: "Azerbaijani", bm: "Bambara",
+        eu: "Basque", be: "Belarusian", bn: "Bengali", bho: "Bhojpuri", bs: "Bosnian",
+        bg: "Bulgarian", ca: "Catalan", ceb: "Cebuano", ny: "Chichewa", "zh-CN": "Chinese (Simplified)",
+        "zh-TW": "Chinese (Traditional)", co: "Corsican", hr: "Croatian", cs: "Czech", da: "Danish",
+        dv: "Dhivehi", doi: "Dogri", nl: "Dutch", en: "English", eo: "Esperanto",
+        et: "Estonian", ee: "Ewe", tl: "Filipino", fi: "Finnish", fr: "French",
+        fy: "Frisian", gl: "Galician", ka: "Georgian", de: "German", el: "Greek",
+        gn: "Guarani", gu: "Gujarati", ht: "Haitian Creole", ha: "Hausa", haw: "Hawaiian",
+        iw: "Hebrew", hi: "Hindi", hmn: "Hmong", hu: "Hungarian", is: "Icelandic",
+        ig: "Igbo", ilo: "Ilocano", id: "Indonesian", ga: "Irish", it: "Italian",
+        ja: "Japanese", jw: "Javanese", kn: "Kannada", kk: "Kazakh", km: "Khmer",
+        rw: "Kinyarwanda", gom: "Konkani", ko: "Korean", kri: "Krio", ku: "Kurdish (Kurmanji)",
+        ckb: "Kurdish (Sorani)", ky: "Kyrgyz", lo: "Lao", la: "Latin", lv: "Latvian",
+        ln: "Lingala", lt: "Lithuanian", lg: "Luganda", lb: "Luxembourgish", mk: "Macedonian",
+        mai: "Maithili", mg: "Malagasy", ms: "Malay", ml: "Malayalam", mt: "Maltese",
+        mi: "Maori", mr: "Marathi", "mni-Mtei": "Meiteilon (Manipuri)", lus: "Mizo", mn: "Mongolian",
+        my: "Myanmar (Burmese)", ne: "Nepali", no: "Norwegian", or: "Odia (Oriya)", om: "Oromo",
+        ps: "Pashto", fa: "Persian", pl: "Polish", pt: "Portuguese", pa: "Punjabi",
+        qu: "Quechua", ro: "Romanian", ru: "Russian", sm: "Samoan", sa: "Sanskrit",
+        gd: "Scots Gaelic", nso: "Sepedi", sr: "Serbian", st: "Sesotho", sn: "Shona",
+        sd: "Sindhi", si: "Sinhala", sk: "Slovak", sl: "Slovenian", so: "Somali",
+        es: "Spanish", su: "Sundanese", sw: "Swahili", sv: "Swedish", tg: "Tajik",
+        ta: "Tamil", tt: "Tatar", te: "Telugu", th: "Thai", ti: "Tigrinya",
+        ts: "Tsonga", tr: "Turkish", tk: "Turkmen", ak: "Twi", uk: "Ukrainian",
+        ur: "Urdu", ug: "Uyghur", uz: "Uzbek", vi: "Vietnamese", cy: "Welsh",
+        xh: "Xhosa", yi: "Yiddish", yo: "Yoruba", zu: "Zulu"
     };
-
     return names[code] || code.toUpperCase();
 }
 
@@ -107,7 +124,7 @@ async function google_translate(text: string, target: string): Promise<Translati
         }
 
         const data = JSON.parse(response_text);
-        
+
         if (!data?.[0] || !Array.isArray(data[0])) {
             return null;
         }
@@ -128,7 +145,7 @@ async function google_translate(text: string, target: string): Promise<Translati
 async function translate(text: string, target: string): Promise<TranslationValue> {
     const cache_key = `${text}:${target}`;
     const cached = translation_cache.get(cache_key);
-    
+
     if (cached) return cached;
 
     try {
@@ -181,9 +198,9 @@ export default definePlugin({
     name: "SimpleTranslate",
     description: "Translate messages with Google Translate",
     authors: [Devs.YellowGreg], //773952016036790272
-    
+
     target: "DESKTOP",
-    
+
     settings,
     contextMenus: {
         "message": msg_ctx
@@ -210,4 +227,3 @@ export default definePlugin({
         }
     }
 });
-
