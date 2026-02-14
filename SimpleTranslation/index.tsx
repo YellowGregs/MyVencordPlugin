@@ -180,7 +180,7 @@ function get_content(message: Message) {
 export default definePlugin({
     name: "SimpleTranslate",
     description: "Translate messages with Google Translate",
-    authors: [Devs.YellowGreg],
+    authors: [Devs.YellowGreg], //773952016036790272
     
     target: "DESKTOP",
     
@@ -210,3 +210,4 @@ export default definePlugin({
         }
     }
 });
+
