@@ -1,0 +1,54 @@
+.vc-simple-translate-accessory {
+    display: block;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background-color: var(--background-secondary);
+    border-left: 4px solid var(--brand-experiment);
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.vc-simple-translate-accessory-icon {
+    margin-right: 6px;
+    vertical-align: text-bottom;
+}
+
+.vc-simple-translate-accessory-icon path {
+    fill: #5865F2 !important;
+}
+
+.vc-simple-translate-accessory-icon svg {
+    color: #5865F2 !important;
+}
+
+.vc-simple-translate-accessory-info {
+    font-size: 12px;
+    color: var(--text-muted) !important;
+    font-style: italic;
+}
+
+.vc-simple-translate-text {
+    color: #ffffff !important;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.vc-simple-translate-dismiss {
+    background: none;
+    border: none;
+    color: var(--text-link);
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.vc-simple-translate-dismiss:hover {
+    color: var(--text-link-low-saturation);
+}
+
+.vc-simple-translate-icon {
+    color: var(--interactive-active) !important;
+}
